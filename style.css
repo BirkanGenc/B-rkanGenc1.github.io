@@ -1,0 +1,382 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #f1c788; /* ana sayfa arkaplan rengi*/
+}
+
+::selection{
+    color: #fff;
+    background: #f2f6f7;
+}
+
+.start_btn,
+.info_box,
+.quiz_box,
+.result_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.info_box.activeInfo,
+.quiz_box.activeQuiz,
+.result_box.activeResult{
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.start_btn button{ /* sınava basla butonu kodları*/
+    font-size: 50px; 
+    font-weight: 500;
+    color: #0e0d0d;
+    padding: 15px 30px;
+    outline: none;
+    border: dashed;  /*kenarları cızgılı yapar*/
+    border-radius: 5px;
+    background-color: rgb(154, 231, 241);
+    cursor: pointer;
+}
+
+.info_box{
+    width: 640px;
+    background: rgb(226, 20, 20);
+    border-radius: 5px 30px 10px 50px;
+    transform: translate(-70%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none; /*Element fare olaylarını uygulamayacaktır.*/
+    transition: all 0.7s ease; /* sıanav kurallrı ıle sınav sayfası arasındakı gecisi saglar*/
+}
+
+.info_box .info-title{ /* sınav kuraları başlık kısmı*/
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px dashed rgb(211, 164, 10);
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    border-radius: 5px 5px 0 0;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.info_box .info-list{ 
+    padding: 30px 30px; /*sınav kuralları ile yazılar arasındakı bosluk mıktarı*/
+}
+
+.info_box .info-list .info{ /* sınav kurallrı yazı boyutu*/
+    margin: 5px 0;
+    font-size: 25px;
+}
+
+.info_box .info-list .info span{ /*vurgulu yazılan cumle*/
+    font-weight: 900;
+    color: #88ff00;
+}
+.info_box .buttons{ /*sınav kurallrı alt kısım kod bloğu*/
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 30px;
+    border-top: 1px dashed rgb(211, 164, 10);
+}
+
+.info_box .buttons button{ /* sınav kuralları buton komutları*/
+    margin: 0 9px; /* iki buton arası bosluk mıktarı*/
+    height: 40px;
+    width: 100px;
+    font-size: 20px;
+    font-weight: 500; /*yazı kalınlıgı*/
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    border: 1px solid #181717; /*dıs kenarlık*/
+    transition: all 0.3s ease;
+}
+
+.quiz_box{ /* sınav kutusu komutları*/
+    width: 650px;
+    background: rgb(224, 210, 5);
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0s ease;
+}
+
+.quiz_box header{ /* sınav kutusu baslık komutları*/
+    position: relative; /*önceki konumlandırmalara göre yer alır*/
+    z-index: 0;
+    height: 100px;
+    padding: 0 30px;
+    background: rgb(119, 194, 22);
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.1);
+}
+
+.quiz_box header .title{ /*tarih sınavı baslık komutları*/
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.quiz_box header .timer{ /*sınav kutusu zaman kutusu komutları*/
+    color: #0c0c0c;
+    background: #f110df;
+    border: 1px solid #0629f1;
+    height: 90px;
+    padding: 0 8px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+}
+
+.quiz_box header .timer .time_left_txt{ /*kalan süre yazısı  komutları*/
+    font-weight: 500;
+    font-size: 17px;
+    color:rgb(255, 217, 0);
+    user-select: none; /*Metin ve alt öğelerin seçimi önlenir.*/
+}
+
+.quiz_box header .timer .timer_sec{ /*sınav kutusu timer komutları*/
+    font-size: 40px;
+    font-weight: 300;
+    height: 36px;
+    width: 90px;
+    color: rgb(230, 15, 15);
+    border-radius: 4px;
+    line-height: 40px; /* sayacın kutu içerisindeki konumunu ayarlar*/
+    text-align: center;
+    background: #f0f2f3;
+    border:none;
+    user-select: none;
+}
+
+.quiz_box header .time_line{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 3px;
+    background: #202020;
+}
+
+section{ /* sınav kutusu arka plan komutları*/
+    padding: 25px 30px 20px 30px;
+    background: rgb(240, 214, 235);
+}
+
+section .que_text{ /*sınav kutusu soru baslıgı komutları*/
+    font-size: 25px;
+    font-weight: 600;
+}
+
+section .option_list{ /*sınav kutusu bosluk mıktarları*/
+    padding: 20px 0px;
+    display: block;   
+}
+
+section .option_list .option{ /*sınav kutusu cevaplar kısmı komutları*/
+    background: rgb(54, 35, 226);
+    border: 5px solid #fe84d5;
+    border-radius: 9px;
+    padding: 8px 15px;
+    font-size: 17px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section .option_list .option:last-child{
+    margin-bottom: 0px;
+}
+
+section .option_list .option:hover{ 
+    color: #004085;
+    background: #f530c4; /*pointer*/
+    border: 5px solid #17e96f;
+}
+
+section .option_list .option.correct{ /*doğru cevap komutları*/
+    color: #eef5eb;
+    background: #54f702;
+    border: 1px solid #c3e6cb;
+}
+
+section .option_list .option.incorrect{ /*yanlış cevap komutları*/
+    color: #f3eaeb;
+    background: #fa0419;
+    border: 1px solid #f5c6cb;
+}
+
+section .option_list .option.disabled{
+    pointer-events: none;
+}
+
+section .option_list .option .icon{ /*icon komutları*/
+    height: 26px;
+    width: 26px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 13px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    line-height: 24px;
+}
+.option_list .option .icon.tick{ 
+    color: #10c500;
+    border-color: #000000;
+    background: #d4edda;
+}
+
+.option_list .option .icon.cross{
+    color: #ff0720;
+    background: #f8d7da;
+    border-color: #0e0d0d;
+}
+
+footer{
+    height: 80px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgb(236, 18, 18);
+}
+
+footer .total_que span{
+    display: flex;
+    user-select: none;
+}
+
+footer .total_que span p{
+    font-weight: 500;
+    padding: 0 5px;
+}
+
+footer .total_que span p:first-child{
+    padding-left: 0px;
+}
+
+footer button{
+    height: 40px;
+    padding: 0 13px;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: rgb(235, 19, 19);
+    border-radius: 5px;
+    background: #eceadf;
+    border: 1px solid #007bff;
+    line-height: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
+
+footer button:hover{
+    background: #caa502;
+}
+
+footer button.show{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+.result_box{ /*sınav sonuc bılgı*/
+    background: rgb(235, 38, 38);
+    border-radius: 5px;
+    display: flex;
+    padding: 25px 30px;
+    width: 450px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.result_box .complete_text{ /*sonuc kutusu yazı komutları*/
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.result_box .score_text span{ /*dogru yanlıs sonucları*/
+    display: flex;
+    margin: 1px 0;
+    font-size: 25px; 
+    font-weight: 500;
+}
+
+.result_box .score_text span p{ /*dogru yanlıs yazı kalınlıgı*/
+    padding: 0 4px;
+    font-weight: 1000;
+}
+
+.result_box .buttons{
+    display: flex;
+    margin: 20px 0;
+}
+
+.result_box .buttons button{
+    margin: 0 10px;
+    height: 45px;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #15ff00;
+    transition: all 0.3s ease;
+}
+
+.buttons button.restart{
+    color: #fff;
+    background: #007bff;
+}
+
+.buttons button.restart:hover{
+    background: #0263ca;
+}
+
+.buttons button.quit{
+    color: #007bff;
+    background: #fff;
+}
+
+.buttons button.quit:hover{
+    color: #fff;
+    background: #007bff;
+}
+.answer-image {
+    width: 100px;
+    height: 100px;
+}
