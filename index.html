@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINAV UYGULAMA</title>
+    <link rel="stylesheet" href="style.css">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <!-- sınava baslama butonu -->
+    <div class="start_btn"><button>Sınava Başla</button></div> <!--css -->
+
+    <!-- Bilgi kutusu-->
+    <div class="info_box"> <!--css-->
+        <div class="info-title"><span>Sınav için geçerli kurallar</span></div>  <!--css-->
+        <div class="info-list"> <!--css-->
+            <div class="info">I. Her soru için süre sadece <span>10sn</span>  olacak.</div>
+            <div class="info">II. Cevabınız seçtikten sonra geri alınamaz.</div>
+            <div class="info">III. Verdiğiniz doğru cevaplara göre puan alacaksınız.</div>
+        </div>
+        <div class="buttons"> <!--css-->
+            <button class="quit">Geri Git</button>
+            <button class="restart">Devam Et</button>
+        </div>
+    </div>
+
+    <!-- sınav kutusu -->
+    <div class="quiz_box"> <!-- css tanımlı-->
+        <header>
+            <div class="title">Tarih Sınavı</div> <!--css-->
+            <div class="timer"> <!--css-->
+                <div class="time_left_txt">KalanSüre</div> <!--css-->
+                <div class="timer_sec">10</div> <!-- sayacın sorgulandıgı yer-->
+            </div>
+            <div class="time_line"></div> <!--css-->
+        </header>
+        <section>
+            <div class="que_text">
+                <!--  JavaScript -->
+            </div>
+            <div class="option_list">
+                <!--  JavaScript -->
+            </div>
+        </section>
+
+        <!-- footer sınav kutusu -->
+        <footer>
+            <div class="total_que">
+              
+            </div>
+            <button class="next_btn">Sonraki Soru</button>
+        </footer>
+    </div>
+
+    <!-- sonuc kutusu -->
+    <div class="result_box"> <!--css-->
+        <div class="icon">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="complete_text">Sınav Tamamlandı.</div> <!--css-->
+        <div class="score_text"> <!--css-->
+         
+        </div>
+        <div class="buttons">
+            <button class="restart">Sınavı Tekrarla</button>
+            <button class="quit">Sınavdan Çık<kbd></kbd></button>
+        </div>
+    </div>
+
+    <script src="question.js"></script>
+
+ 
+    <script src="script.js"></script>
+
+</body>
+</html>
